@@ -3,9 +3,7 @@ from scipy.ndimage import gaussian_filter, map_coordinates
 
 
 def apply_elastic_deform_2d(
-    image: np.ndarray, 
-    alpha: float = 34.0, 
-    sigma: float = 4.0
+    image: np.ndarray, alpha: float = 34.0, sigma: float = 4.0
 ) -> np.ndarray:
     """
     Applies 2D Elastic Deformation to simulate organic soft-tissue morphology changes.
@@ -30,5 +28,5 @@ def add_rician_noise(image: np.ndarray, noise_level: float = 0.05) -> np.ndarray
     """
     noise1 = np.random.normal(0, noise_level, image.shape)
     noise2 = np.random.normal(0, noise_level, image.shape)
-    noisy_image = np.sqrt((image + noise1) ** 2 + noise2 ** 2)
+    noisy_image = np.sqrt((image + noise1) ** 2 + noise2**2)
     return noisy_image

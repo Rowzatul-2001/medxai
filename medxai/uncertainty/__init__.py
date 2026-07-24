@@ -3,13 +3,11 @@ import torch.nn as nn
 
 
 def compute_mc_dropout_uncertainty(
-    model: nn.Module, 
-    input_tensor: torch.Tensor, 
-    num_samples: int = 10
+    model: nn.Module, input_tensor: torch.Tensor, num_samples: int = 10
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Computes mean prediction and epistemic uncertainty (variance) using Monte Carlo Dropout.
-    
+
     Uncertainty formula per pixel:
     $$\sigma^2 = \frac{1}{T} \sum_{t=1}^{T} (p_t - \bar{p})^2$$
     """
