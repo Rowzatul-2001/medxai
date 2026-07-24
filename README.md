@@ -86,69 +86,9 @@ The library emphasizes
 
 ---
 
-# Features
+##  Core Capabilities & Features
 
-## Segmentation Metrics
-
-- Dice Coefficient
-- IoU (Jaccard Index)
-- Precision
-- Recall
-- Pixel Accuracy
-- Automatic tensor validation
-- Batch-wise evaluation
-- GPU acceleration
-
----
-
-## Loss Functions
-
-- Dice Loss
-- BCE + Dice Loss
-- Focal Tversky Loss
-- Hybrid losses
-- Stable numerical implementations
-- Memory-efficient computation
-
----
-
-## Medical Image Preprocessing
-
-- CLAHE
-- ROI Cropping
-- Image Normalization
-- Contrast Enhancement
-- Multi-channel support
-- Batch preprocessing utilities
-
----
-
-## Radiomics
-
-- Gray-Level Co-occurrence Matrix (GLCM)
-- Local Binary Pattern (LBP)
-- Texture Statistics
-- NumPy optimized implementation
-- Lightweight feature extraction
-
----
-
-## Explainable AI
-
-- Grad-CAM
-- Automatic Hook Management
-- GPU-safe implementation
-- Model-agnostic interface
-- Visualization utilities
-
----
-
-## Post-processing
-
-- Binary Mask Cleaning
-- Connected Component Filtering
-- Small Object Removal
-- Morphological Utilities
+**MedXAI** provides a high-performance, end-to-end ecosystem designed for reproducible medical imaging research and production-grade clinical AI pipelines. Seamlessly integrated with **PyTorch**, **NumPy**, and **scikit-image**, the toolkit delivers GPU-accelerated spatial segmentation metrics, numerically stable hybrid loss functions (such as Dice-BCE and Focal Tversky), clinical-grade preprocessing, and automated post-processing utilities for boundary refinement. Additionally, it empowers advanced diagnostic workflows with vectorized radiomics feature extraction (GLCM and LBP), model-agnostic Explainable AI (Grad-CAM), epistemic uncertainty estimation, and memory-safe sliding-window inference for large multi-dimensional volumetric arrays.
 
 ---
 

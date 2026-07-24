@@ -202,3 +202,41 @@ class DiceBCELoss(nn.Module):
         )
 
         return (self.bce_weight * bce) + ((1 - self.bce_weight) * dice_loss)
+
+
+class DeepSupervisionLoss(nn.Module):
+    """
+    Wraps a base loss function to compute multi-scale supervision loss outputs across dynamic decoder depths.
+    """
+
+    def __init__(self, base_loss_fn: nn.Module, weights: list[float] = None):
+        super().__init__()
+        self.base_loss_fn = base_loss_fn
+        self.weights = weights
+
+    def forward(
+        self,
+        predictions: list[torch.Tensor] | tuple[torch.Tensor],
+        target: torch.Tensor,
+    ) -> torch.Tensor:
+        if not isinstance(predictions, (list, tuple)):
+            return self.base_loss_fn(predictions, target)
+
+        if self.weights is None:
+            # Exponential weight decay for lower resolution layers
+            raw_weights = [1.0 / (2**i) for i in range(len(predictions))]
+            total = sum(raw_weights)
+            self.weights = [w / total for w in raw_weights]
+
+        total_loss = 0.0
+        for pred, weight in zip(predictions, self.weights):
+            if pred.shape[2:] != target.shape[2:]:
+                scaled_target = F.interpolate(
+                    target, size=pred.shape[2:], mode="nearest"
+                )
+            else:
+                scaled_target = target
+
+            total_loss += weight * self.base_loss_fn(pred, scaled_target)
+
+        return total_loss
