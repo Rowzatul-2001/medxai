@@ -46,6 +46,7 @@ def export_onnx(
         dynamic_axes=dynamic_axes,
         opset_version=opset_version,
         do_constant_folding=True,
+        dynamo=False,
     )
 
     onnx_model = onnx.load(export_path)
