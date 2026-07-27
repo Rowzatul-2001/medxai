@@ -25,7 +25,8 @@ dependencies = [
   "scikit-image>=0.19",
   "matplotlib>=3.4"
 ]
-
+[project.optional-dependencies]
+deployment = ["onnx>=1.14", "onnxruntime>=1.16"]
 [project.urls]
 Homepage = "https://github.com/aman0311x/medxai"
 
