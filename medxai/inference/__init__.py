@@ -1,3 +1,11 @@
+from .sliding_window_inferrer import SlidingWindowInferrer
+
+__all__ = [
+    "SlidingWindowInferrer",
+    "sliding_window_inference_2d",
+    "sliding_window_inference_3d",
+]
+
 import torch
 
 
